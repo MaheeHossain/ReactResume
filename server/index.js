@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 /* Import routers here */
-
+import demoRouter from './routes/demoRouter';
 
 /* Import express and choose port number */
 const app = express();
@@ -26,7 +26,7 @@ mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((error) => console.log(error.message));
 
 /* Route initialisations */
-
+app.use("/demo", demoRouter);
 
 /* Send remaining requests to React app */
 app.get("/*", () => {
